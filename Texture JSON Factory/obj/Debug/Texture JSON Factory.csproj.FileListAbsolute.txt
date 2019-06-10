@@ -1,0 +1,13 @@
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\bin\Debug\Texture JSON Factory.exe.config
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\bin\Debug\Texture JSON Factory.exe
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\bin\Debug\Texture JSON Factory.pdb
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\bin\Debug\Newtonsoft.Json.dll
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\bin\Debug\Newtonsoft.Json.xml
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\obj\Debug\Texture JSON Factory.csprojAssemblyReference.cache
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\obj\Debug\Texture_JSON_Factory.MainForm.resources
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\obj\Debug\Texture_JSON_Factory.Properties.Resources.resources
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\obj\Debug\Texture JSON Factory.csproj.GenerateResource.cache
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\obj\Debug\Texture JSON Factory.csproj.CoreCompileInputs.cache
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\obj\Debug\Texture JSON Factory.csproj.CopyComplete
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\obj\Debug\Texture JSON Factory.exe
+H:\VS Projects\Texture JSON Factory\Texture JSON Factory\obj\Debug\Texture JSON Factory.pdb
