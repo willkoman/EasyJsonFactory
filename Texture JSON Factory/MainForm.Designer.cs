@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_Block = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_BlockName = new System.Windows.Forms.TextBox();
             this.btn_South = new System.Windows.Forms.Button();
             this.btn_East = new System.Windows.Forms.Button();
             this.btn_West = new System.Windows.Forms.Button();
@@ -41,8 +43,6 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.tb_BlockName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tb_ModName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_Path = new System.Windows.Forms.TextBox();
@@ -51,8 +51,12 @@
             this.btn_export = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.btn_Item = new System.Windows.Forms.Button();
+            this.lb_itemName = new System.Windows.Forms.Label();
+            this.tb_ItemName = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tab_Block.SuspendLayout();
+            this.tab_Item.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -83,6 +87,22 @@
             this.tab_Block.TabIndex = 0;
             this.tab_Block.Text = "Block";
             this.tab_Block.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(418, 107);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Block Name";
+            // 
+            // tb_BlockName
+            // 
+            this.tb_BlockName.Location = new System.Drawing.Point(418, 129);
+            this.tb_BlockName.Name = "tb_BlockName";
+            this.tb_BlockName.Size = new System.Drawing.Size(168, 20);
+            this.tb_BlockName.TabIndex = 12;
             // 
             // btn_South
             // 
@@ -152,10 +172,13 @@
             // 
             // tab_Item
             // 
+            this.tab_Item.Controls.Add(this.lb_itemName);
+            this.tab_Item.Controls.Add(this.tb_ItemName);
+            this.tab_Item.Controls.Add(this.btn_Item);
             this.tab_Item.Location = new System.Drawing.Point(4, 22);
             this.tab_Item.Name = "tab_Item";
             this.tab_Item.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Item.Size = new System.Drawing.Size(613, 431);
+            this.tab_Item.Size = new System.Drawing.Size(613, 282);
             this.tab_Item.TabIndex = 1;
             this.tab_Item.Text = "Item";
             this.tab_Item.UseVisualStyleBackColor = true;
@@ -169,22 +192,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "PNG File|*.png|All Files|*.*";
-            // 
-            // tb_BlockName
-            // 
-            this.tb_BlockName.Location = new System.Drawing.Point(418, 129);
-            this.tb_BlockName.Name = "tb_BlockName";
-            this.tb_BlockName.Size = new System.Drawing.Size(168, 20);
-            this.tb_BlockName.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(418, 107);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Block Name";
             // 
             // tb_ModName
             // 
@@ -248,9 +255,36 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(640, 26);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(293, 282);
             this.richTextBox1.TabIndex = 19;
             this.richTextBox1.Text = "";
+            // 
+            // btn_Item
+            // 
+            this.btn_Item.Location = new System.Drawing.Point(89, 43);
+            this.btn_Item.Name = "btn_Item";
+            this.btn_Item.Size = new System.Drawing.Size(176, 171);
+            this.btn_Item.TabIndex = 0;
+            this.btn_Item.Text = "Item Texture";
+            this.btn_Item.UseVisualStyleBackColor = true;
+            this.btn_Item.Click += new System.EventHandler(this.Btn_Item_Click);
+            // 
+            // lb_itemName
+            // 
+            this.lb_itemName.AutoSize = true;
+            this.lb_itemName.Location = new System.Drawing.Point(337, 119);
+            this.lb_itemName.Name = "lb_itemName";
+            this.lb_itemName.Size = new System.Drawing.Size(58, 13);
+            this.lb_itemName.TabIndex = 15;
+            this.lb_itemName.Text = "Item Name";
+            // 
+            // tb_ItemName
+            // 
+            this.tb_ItemName.Location = new System.Drawing.Point(337, 141);
+            this.tb_ItemName.Name = "tb_ItemName";
+            this.tb_ItemName.Size = new System.Drawing.Size(168, 20);
+            this.tb_ItemName.TabIndex = 14;
             // 
             // MainForm
             // 
@@ -270,6 +304,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tab_Block.ResumeLayout(false);
             this.tab_Block.PerformLayout();
+            this.tab_Item.ResumeLayout(false);
+            this.tab_Item.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,6 +335,9 @@
         private System.Windows.Forms.Button btn_export;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button btn_Item;
+        private System.Windows.Forms.Label lb_itemName;
+        private System.Windows.Forms.TextBox tb_ItemName;
     }
 }
 

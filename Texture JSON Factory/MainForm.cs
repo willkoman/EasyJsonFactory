@@ -19,58 +19,106 @@ namespace Texture_JSON_Factory
     {
 
         List<Bitmap> textures = new List<Bitmap>(6);
-        Bitmap[] itemTexture;
+        Bitmap itemTexture;
         String path = @"";
         public MainForm()
         {
             InitializeComponent();
             for (int i = 0; i < textures.Capacity; i++)
-                textures.Insert(i,new Bitmap(16, 16));
+                textures.Insert(i, new Bitmap(16, 16));
         }
 
 
         private void Btn_Top_Click_1(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-            textures.Insert(0, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+            try
+            {
+                textures.Insert(0, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+            }
+            catch (Exception ex)
+            {
+                richTextBox1.AppendText(ex.ToString());
+            }
+
             btn_Top.BackgroundImage = textures.ElementAt(0);
-            
+
         }
 
         private void Btn_West_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-            textures.Insert(1, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+            try
+            {
+                textures.Insert(1, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+            }
+
+
+            catch (Exception ex)
+            {
+                richTextBox1.AppendText(ex.ToString());
+            }
             btn_West.BackgroundImage = textures.ElementAt(1);
         }
 
         private void Btn_North_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-            textures.Insert(2, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+
+            try
+            {
+                textures.Insert(2, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+            }
+            catch (Exception ex)
+            {
+                richTextBox1.AppendText(ex.ToString());
+            }
             btn_North.BackgroundImage = textures.ElementAt(2);
         }
 
         private void Btn_East_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-            textures.Insert(3, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+
+            try
+            {
+                textures.Insert(3, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+            }
+            catch (Exception ex)
+            {
+                richTextBox1.AppendText(ex.ToString());
+            }
             btn_East.BackgroundImage = textures.ElementAt(3);
         }
 
         private void Btn_South_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-            textures.Insert(4, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+
+            try
+            {
+                textures.Insert(4, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+            }
+            catch (Exception ex)
+            {
+                richTextBox1.AppendText(ex.ToString());
+            }
             btn_South.BackgroundImage = textures.ElementAt(4);
         }
 
         private void Btn_Bottom_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-            textures.Insert(5, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+            try
+            {
+                textures.Insert(5, (Bitmap)Bitmap.FromFile(openFileDialog1.FileName));
+            }
+            catch (Exception ex)
+            {
+                richTextBox1.AppendText(ex.ToString());
+            }
             btn_Bottom.BackgroundImage = textures.ElementAt(5);
-            
+
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -82,40 +130,48 @@ namespace Texture_JSON_Factory
 
         private void Btn_export_Click(object sender, EventArgs e)
         {
-            String permanentPath = path;
-            var baseDir = Directory.CreateDirectory(path + "\\" + tb_BlockName.Text + "\\");
-            baseDir.Attributes = FileAttributes.Normal;
-            var modelDir = Directory.CreateDirectory(path + "\\" + tb_BlockName.Text + "\\models\\block\\");
-            modelDir.Attributes = FileAttributes.Normal;
-            var blockstateDir = Directory.CreateDirectory(path + "\\" + tb_BlockName.Text + "\\blockstates\\");
-            blockstateDir.Attributes = FileAttributes.Normal;
-            var textureDir = Directory.CreateDirectory(path + "\\" + tb_BlockName.Text + "\\textures\\blocks\\"+tb_BlockName.Text);
-            textureDir.Attributes &= ~FileAttributes.ReadOnly;
+            if (tabControl1.SelectedTab == tab_Block)
+            {
+                String permanentPath = path;
+                var baseDir = Directory.CreateDirectory(path + "\\" + tb_BlockName.Text + "\\");
+                baseDir.Attributes = FileAttributes.Normal;
+                var modelDir = Directory.CreateDirectory(path + "\\" + tb_BlockName.Text + "\\models\\block\\");
+                modelDir.Attributes = FileAttributes.Normal;
+                var blockstateDir = Directory.CreateDirectory(path + "\\" + tb_BlockName.Text + "\\blockstates\\");
+                blockstateDir.Attributes = FileAttributes.Normal;
+                var textureDir = Directory.CreateDirectory(path + "\\" + tb_BlockName.Text + "\\textures\\blocks\\" + tb_BlockName.Text);
+                textureDir.Attributes &= ~FileAttributes.ReadOnly;
 
-            CreateBlockModel(permanentPath);
-            CreateBlockState(permanentPath);
+                CreateBlockModel(permanentPath);
+                CreateBlockState(permanentPath);
 
-            SavePNG(textureDir.FullName + "\\" + "sideUp.png", textures.ElementAt(0), 100);
-            SavePNG(textureDir.FullName + "\\" + "sideWest.png", textures.ElementAt(1), 100);
-            SavePNG(textureDir.FullName + "\\" + "sideNorth.png", textures.ElementAt(2), 100);
-            SavePNG(textureDir.FullName + "\\" + "sideEast.png", textures.ElementAt(3), 100);
-            SavePNG(textureDir.FullName + "\\" + "sideSouth.png", textures.ElementAt(4), 100);
-            SavePNG(textureDir.FullName + "\\" + "sideDown.png", textures.ElementAt(5), 100);
-            //textures.ElementAt(0).Save(textureDir.FullName + tb_BlockName.Text + "\\" + "sideUp.png", System.Drawing.Imaging.ImageFormat.Jpeg);
-            //textures.ElementAt(1).Save(textureDir.FullName + tb_BlockName.Text + "\\" + "sideWest.png", System.Drawing.Imaging.ImageFormat.Png);
-            //textures.ElementAt(2).Save(textureDir.FullName + tb_BlockName.Text + "\\" + "sideNorth.png", System.Drawing.Imaging.ImageFormat.Png);
-            //textures.ElementAt(3).Save(textureDir.FullName + tb_BlockName.Text + "\\" + "sideEast.png", System.Drawing.Imaging.ImageFormat.Png);
-            //textures.ElementAt(4).Save(textureDir.FullName + tb_BlockName.Text + "\\" + "sideSouth.png", System.Drawing.Imaging.ImageFormat.Png);
-            //textures.ElementAt(5).Save(textureDir.FullName + tb_BlockName.Text + "\\" + "sideDown.png", System.Drawing.Imaging.ImageFormat.Png);
-            MessageBox.Show("Successfully Output to " + path + "\\" + tb_BlockName.Text + "\\" + "!");
-
+                SavePNG(textureDir.FullName + "\\" + "sideUp.png", textures.ElementAt(0), 100);
+                SavePNG(textureDir.FullName + "\\" + "sideWest.png", textures.ElementAt(1), 100);
+                SavePNG(textureDir.FullName + "\\" + "sideNorth.png", textures.ElementAt(2), 100);
+                SavePNG(textureDir.FullName + "\\" + "sideEast.png", textures.ElementAt(3), 100);
+                SavePNG(textureDir.FullName + "\\" + "sideSouth.png", textures.ElementAt(4), 100);
+                SavePNG(textureDir.FullName + "\\" + "sideDown.png", textures.ElementAt(5), 100);
+                MessageBox.Show("Successfully Output to " + path + "\\" + tb_BlockName.Text + "\\" + "!");
+            }
+            else
+            {
+                String permanentPath = path;
+                var baseDir = Directory.CreateDirectory(path + "\\" + tb_ItemName.Text + "\\");
+                baseDir.Attributes = FileAttributes.Normal;
+                var modelDir = Directory.CreateDirectory(path + "\\" + tb_ItemName.Text + "\\models\\item\\");
+                modelDir.Attributes = FileAttributes.Normal;
+                var textureDir = Directory.CreateDirectory(path + "\\" + tb_ItemName.Text + "\\textures\\items\\" );
+                textureDir.Attributes &= ~FileAttributes.ReadOnly;
+                CreateItemTexture(permanentPath);
+                SavePNG(textureDir.FullName + "\\" + tb_ItemName.Text + ".png", itemTexture, 100);
+            }
         }
-        public static void SavePNG (string path, Image img, int quality)
+        public static void SavePNG(string path, Image img, int quality)
         {
             EncoderParameter qualityParam
             = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
 
-            ImageCodecInfo jpegCodec= GetEncoderInfo(@"image/png");
+            ImageCodecInfo jpegCodec = GetEncoderInfo(@"image/png");
 
             EncoderParameters encoderParams
             = new EncoderParameters(1);
@@ -147,6 +203,25 @@ namespace Texture_JSON_Factory
             }
             return null;
         }
+        public void CreateItemTexture(String path)
+        {
+            path = path + "\\" + tb_ItemName.Text + "\\models\\item\\";
+            Item item = new Item
+            {
+                parent = "item/generated",
+                textures = new TexturesItem
+                {
+                    layer0 = tb_ModName.Text.Trim(' ') + ":items/" + tb_ItemName.Text
+                }
+            };
+            String converted = JsonConvert.SerializeObject(item);
+            //richTextBox1.Text = JToken.Parse(converted).ToString();
+            File.WriteAllText(path + tb_ItemName.Text + ".json", JToken.Parse(converted).ToString());
+        }
+
+
+
+
         public void CreateBlockModel(String path)
         {
             path = path + "\\" + tb_BlockName.Text + "\\models\\block\\";
@@ -156,13 +231,13 @@ namespace Texture_JSON_Factory
                 parent = "block/cube",
                 textures = new Textures
                 {
-                    particle = tb_ModName.Text.Trim(' ') + ":blocks/sideNorth",
-                    down = tb_ModName.Text.Trim(' ') + ":blocks/sideDown",
-                    up = tb_ModName.Text.Trim(' ') + ":blocks/sideUp",
-                    east = tb_ModName.Text.Trim(' ') + ":blocks/sideEast",
-                    west = tb_ModName.Text.Trim(' ') + ":blocks/sideWest",
-                    north = tb_ModName.Text.Trim(' ') + ":blocks/sideNorth",
-                    south = tb_ModName.Text.Trim(' ') + ":blocks/sideSouth"
+                    particle = tb_ModName.Text.Trim(' ') + ":blocks/" + tb_BlockName.Text + "/ sideNorth",
+                    down = tb_ModName.Text.Trim(' ') + ":blocks/" + tb_BlockName.Text + "/sideDown",
+                    up = tb_ModName.Text.Trim(' ') + ":blocks/" + tb_BlockName.Text + "/sideUp",
+                    east = tb_ModName.Text.Trim(' ') + ":blocks/" + tb_BlockName.Text + "/sideEast",
+                    west = tb_ModName.Text.Trim(' ') + ":blocks/" + tb_BlockName.Text + "/sideWest",
+                    north = tb_ModName.Text.Trim(' ') + ":blocks/" + tb_BlockName.Text + "/sideNorth",
+                    south = tb_ModName.Text.Trim(' ') + ":blocks/" + tb_BlockName.Text + "/sideSouth"
                 }
             };
 
@@ -209,6 +284,17 @@ namespace Texture_JSON_Factory
             public Textures textures { get; set; }
 
 
+        }
+        internal class Item
+        {
+            public string parent { get; set; }
+            public TexturesItem textures { get; set; }
+
+
+        }
+        public class TexturesItem
+        {
+            public string layer0 { get; set; }
         }
         public class Textures
         {
@@ -287,12 +373,26 @@ namespace Texture_JSON_Factory
         }
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            if (path == "" || tb_BlockName.Text.Trim(' ') == "" || tb_ModName.Text.Trim(' ') == "")
+            if (path == ""  || tb_ModName.Text.Trim(' ') == "")
                 btn_export.Enabled = false;
             else
                 btn_export.Enabled = true;
 
 
+        }
+
+        private void Btn_Item_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            try
+            {
+                itemTexture = (Bitmap)Bitmap.FromFile(openFileDialog1.FileName);
+            }
+            catch (Exception ex)
+            {
+                richTextBox1.AppendText(ex.ToString());
+            }
+            btn_Item.BackgroundImage = itemTexture;
         }
     }
 }
